@@ -12,10 +12,8 @@
 需要时可在终端用环境变量控制：
 
 ```bash
-HG_OUTDIR=/Volumes/盘/downloads bash run.command   # 存到外置盘
-HG_DONE=/Volumes/盘/downloads  bash run.command    # 旧存档在外置盘
-HG_LIMIT=5 bash run.command                        # 只下 5 条
-bash run.command --rescan                          # 重新扫描全站
+HG_LIMIT=5 bash run.command   # 只下 5 条
+bash run.command --rescan     # 重新扫描全站
 ```
 
 ### 方式二：终端命令
@@ -31,8 +29,6 @@ python3 download_videos.py --input all.json --jobs 1 --workers 8
 | `--resume` | 续跑，跳过已完成的条目（不从头开始） |
 | `--limit 5` | 只下 5 条（先试跑） |
 | `--title-match "双生道侣"` | 按标题关键词筛选 |
-| `--out-dir /Volumes/盘/downloads` | 存到外置磁盘 |
-| `--done-dir /Volumes/盘/downloads` | 已挪走的旧存档视为已完成，不重复下 |
 | `--snapshot` | 只刷新进度快照，不下载 |
 
 视频存到 `downloads/drama/<剧名>/EPn.mp4`、`downloads/series/<标题>_<id>.mp4`，
