@@ -34,6 +34,11 @@ python3 download_videos.py --input all.json --jobs 1 --workers 8
 视频存到 `downloads/drama/<剧名>/EPn.mp4`、`downloads/series/<标题>_<id>.mp4`，
 报告 `_report.csv`，续跑进度 `_progress.json`。
 
+> **地址有时效**：m3u8 链接带 ticket，扫描后放久了会失效（报 `m3u8 无法获取` / `已过期`）。
+> 脚本会**自动换新鲜链接重试**（日志显示 `[已刷新链接]`）；
+> 若大面积失败，说明清单整体过期，重新扫描拿新地址即可：`bash run.command --rescan`。
+> 已经下载好的文件不受影响，不会重复下载。
+
 ## 二、必须挂 VPN（全局模式 / TUN 模式）
 
 视频 CDN 仅对中国大陆 IP 开放，不挂代理必然失败（`cdn_blocked`）。
