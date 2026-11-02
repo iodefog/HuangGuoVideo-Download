@@ -4,11 +4,25 @@
 
 ## 一、直接下载
 
+### 方式一（推荐）：双击 `run.command`
+
+全自动跑完：依赖检查 → 检测出口 → 扫描 → 下载。
+已下过的自动跳过，中断后**再双击一次**即可继续，不会从头开始。
+
+需要时可在终端用环境变量控制：
+
+```bash
+HG_OUTDIR=/Volumes/盘/downloads bash run.command   # 存到外置盘
+HG_DONE=/Volumes/盘/downloads  bash run.command    # 旧存档在外置盘
+HG_LIMIT=5 bash run.command                        # 只下 5 条
+bash run.command --rescan                          # 重新扫描全站
+```
+
+### 方式二：终端命令
+
 ```bash
 python3 download_videos.py --input all.json --jobs 1 --workers 8
 ```
-
-已下过的自动跳过，中断后再跑同一条命令即可继续，不会从头开始。
 
 常用参数：
 
@@ -20,15 +34,6 @@ python3 download_videos.py --input all.json --jobs 1 --workers 8
 | `--out-dir /Volumes/盘/downloads` | 存到外置磁盘 |
 | `--done-dir /Volumes/盘/downloads` | 已挪走的旧存档视为已完成，不重复下 |
 | `--snapshot` | 只刷新进度快照，不下载 |
-
-也可双击 `run.command` 一键跑（依赖检查 → 扫描 → 下载），支持：
-
-```bash
-HG_OUTDIR=/Volumes/盘/downloads bash run.command   # 存到外置盘
-HG_DONE=/Volumes/盘/downloads  bash run.command    # 旧存档在外置盘
-HG_LIMIT=5 bash run.command                        # 只下 5 条
-bash run.command --rescan                          # 重新扫描全站
-```
 
 视频存到 `downloads/drama/<剧名>/EPn.mp4`、`downloads/series/<标题>_<id>.mp4`，
 报告 `_report.csv`，续跑进度 `_progress.json`。
